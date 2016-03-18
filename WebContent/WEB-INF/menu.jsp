@@ -11,4 +11,8 @@
 		<input type="hidden" name="finished" value="Yo" id="finished"/>
 		<button type="submit" class="btn btn-lg btn-primary">Exporter traduction</button>
 	</form>
+	<br />
+	<form method="get" action="parseXmlFile" enctype="multipart/form-data">
+		<button type="submit" class="btn btn-lg btn-primary">Parser XML File</button>
+	</form>
 </div>

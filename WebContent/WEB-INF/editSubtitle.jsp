@@ -1,22 +1,14 @@
 <%@ include file="/WEB-INF/taglibs.jsp"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!--[if lt IE 9]>
-	        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	 <![endif]-->
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw=="
-	crossorigin="anonymous">
+	<meta charset="utf-8" />
+	<%@ include file="/WEB-INF/stuffs.jsp"%>
 <title>Editer les sous-titres</title>
 </head>
 <body>
-	<jsp:include page="/css/styleBleu.css" />
+	<jsp:include page="/css/style.css" />
 	<header>
 		<H2 class="text-center">Traduction de fichier de sous titre</H2>
 	</header>
