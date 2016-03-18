@@ -1,21 +1,18 @@
 <%@ include file="/WEB-INF/taglibs.jsp"%>
-<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%> --%>
-<%@ page pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
-<head>
-<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8;" /> -->
-<meta charset="utf-8" />
-<!--[if lt IE 9]>
+  <head>
+     <meta charset="utf-8" />
+	<!--[if lt IE 9]>
      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
      <![endif]-->
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw=="
 	crossorigin="anonymous">
-<title>Bienvenue</title>
-</head>
+	<title>Bienvenue</title>
+	</head>
 <jsp:include page="/css/styleBleu.css" />
 <body>
 
@@ -66,27 +63,6 @@
 										</form>
 								</div>
 							</div>
-							
-							<!-- <table style="width: 100%;">
-								<tr>
-									<td style="width: 35%;"><img id="imgIndex"
-											class="img-rounded image-responsive" href="upload"
-											src="http://www.homecine-compare.com/images/lexicon/159/lex-hc-srt.png"
-											alt="Illustration du contenu d'un fichier SRT" border="0"
-											usemap="#panneaux" title="Contenu d'un fichier SRT" />
-									</td>
-									<td style="align: center; width: 65%; background-color:#aec3e0;">
-										<form method="get" action="upload"
-											enctype="multipart/form-data">
-											<input type="submit" class="gobutton btn btn-success" value="Nouvelle traduction"/>
-											<div class="text-center">
-												<button type="submit" class="btn btn-lg btn-primary">Nouvelle
-													traduction</button>
-											</div>
-										</form>
-									</td>
-								</tr>
-							</table> -->
 						</article>
 						<br />
 						<P class="padding">Les fichiers SRT sont notamment utilisés

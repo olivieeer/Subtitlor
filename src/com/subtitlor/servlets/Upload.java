@@ -38,7 +38,7 @@ public class Upload extends HttpServlet {
     }
 
     @Override
-    protected void doGet( HttpServletRequest request, HttpServletResponse response )
+    protected void doGet( final HttpServletRequest request, final HttpServletResponse response )
             throws ServletException, IOException {
 
         /* Récupération de la date courante */
@@ -51,7 +51,7 @@ public class Upload extends HttpServlet {
     }
 
     @Override
-    public void doPost( HttpServletRequest request, HttpServletResponse response )
+    public void doPost( final HttpServletRequest request, final HttpServletResponse response )
             throws ServletException, IOException {
         String description = null;
         if ( !ServletFileUpload.isMultipartContent( request ) ) {

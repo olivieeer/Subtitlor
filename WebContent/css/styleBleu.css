@@ -1,7 +1,7 @@
 <style>
 body
 {
-	background-color: #aec3e0;
+	/* background-color: #aec3e0; */
 }
 body, header, section, footer, nav, article, H1, H2, H3, a, P, input {
 		font-family: Tahoma, Verdana, Segoe, sans-serif;
@@ -10,10 +10,10 @@ body, header, section, footer, nav, article, P, input {
 	font-size: 16px;
 	color : black;
 }
-.well
+/* .well
 {
 	background-color: #668dc4;
-}
+} */
 #bloc_page
 {
     width: 100%;
@@ -42,8 +42,7 @@ h1.PageIndex
 }
 H3
 {
-	
-	margin : 0% 20% 0% 20%;
+	margin : 0% 20%;
 	color : gray;
 }
 H3.errorDB, H3.errorFileUpload
@@ -54,7 +53,7 @@ H3 P
 {
 	align : center;
 	text-align : center;
-	margin : 0% 20% 0% 20%;
+	margin : 0% 20%;
 	color : gray;
 }
 H3.green
@@ -63,20 +62,30 @@ H3.green
 	margin : 0% 20% 0% 20%;
 	color : green;
 }
-header
+ header
 {
-	margin : 2% 30% 0% 30%;
+	margin : 5% 30%;
 	align : center;
 	text-align : center;
 	color : #696969;
+	border-radius: 10px 10px 10px 10px;
+	border: 3px solid #318ce7;
 }
+header:hover{
+  -webkit-transform:rotate(180deg); 
+  -moz-transform:rotate(180deg);
+  -o-transform:rotate(180deg); 
+  -ms-transform:rotate(180deg); 
+  transform:rotate(180deg);
+}
+/*
 header, fieldset, footer, a
 {
     -moz-border-radius : 10px;
     -webkit-border-radius:10px;
     border-radius: 10px 10px 10px 10px;
 	border: 3px solid #318ce7;
-}
+} */
  section
 {
     padding : 0% 0% 30px 1%;
