@@ -12,8 +12,9 @@ import com.subtitlor.utilities.SubtitlesHandler;
 
 public class EditSubtitle extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
-    private SubtitlesHandler  subtitlesHandler;
+    private static final long   serialVersionUID = 1L;
+    private static final String VIEW             = "/WEB-INF/editSubtitle.jsp";
+    private SubtitlesHandler    subtitlesHandler;
 
     @Override
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
@@ -47,7 +48,7 @@ public class EditSubtitle extends HttpServlet {
             } else {
                 System.out.println( "le fichier " + this.subtitlesHandler.getFileName() + " n\'a pas été éffacé" );
             }
-            this.getServletContext().getRequestDispatcher( "/WEB-INF/editSubtitle.jsp" ).forward( request, response );
+            this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
         }
     }
 
@@ -55,7 +56,7 @@ public class EditSubtitle extends HttpServlet {
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
         request.setAttribute( "subtitles", subtitlesHandler.getOriginalSubtitles() );
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/editSubtitle.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
 
     }
 

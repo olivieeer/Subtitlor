@@ -3,17 +3,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<%@ include file="/WEB-INF/stuffs.jsp"%>
-	<title>Upload File</title>
+<meta charset="utf-8" />
+<%@ include file="/WEB-INF/inc/stuffs.jsp"%>
+
+<title>Upload File</title>
 </head>
 <body>
 	<jsp:include page="/css/style.css" />
-	<header>
-		<H2>Traduction de fichier de sous titre</H2>
-	</header>
 	<div ng-app="">
-		<section id="container-fluid">
+
+		<%@ include file="/WEB-INF/inc/navbar.jsp"%>
+
+			<section class="container">
 			<div class="row">
 				<div class="col-md-12 col-lg-12">
 					<div class="col-md-3 col-lg-3 text-center">

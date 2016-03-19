@@ -4,7 +4,7 @@
 <html>
   <head>
      <meta charset="utf-8" />
-	<%@ include file="/WEB-INF/stuffs.jsp"%>
+	<%@ include file="/WEB-INF/inc/stuffs.jsp"%>
 	<title>Login</title>
 	<style>
 	[class*="col"] {
@@ -20,12 +20,13 @@
 <body>
 	<jsp:include page="/css/style.css" />
 	
-		<section id="container-fluid">
+		
+	<%@ include file="/WEB-INF/inc/navbar.jsp"%>	
+			
+		<section class="container">
 
-			<header>
-				<H2>CONNEXION</H2>
-			</header>
-
+ 			<% pageContext.setAttribute("now", new org.joda.time.DateTime()); %>
+  			<joda:format value="${now}" style="SM" />
 			<form class="form-horizontal col-md-offset-3 col-md-6 well">
 				<fieldset>
 					<legend>Connexion</legend>

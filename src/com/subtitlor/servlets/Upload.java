@@ -20,14 +20,15 @@ import org.joda.time.format.DateTimeFormat;
 
 public class Upload extends HttpServlet {
 
-    public static final int   TAILLE_TAMPON    = 10240;
-    public static final int   MAX_SIZE         = 10 * 1024 * 1024; // 10Mb
-    private ServletFileUpload uploader         = null;
-    private static final long serialVersionUID = 1L;
-    private File              file;
-    private File              filesDir;
-    private FileItem          fileItem;
-    private String            fileDescription;
+    private static final long   serialVersionUID = 1L;
+    private static final String VIEW             = "/WEB-INF/upload.jsp";
+    public static final int     TAILLE_TAMPON    = 10240;
+    public static final int     MAX_SIZE         = 10 * 1024 * 1024;     // 10Mb
+    private ServletFileUpload   uploader         = null;
+    private File                file;
+    private File                filesDir;
+    private FileItem            fileItem;
+    private String              fileDescription;
 
     @Override
     public void init() throws ServletException {
@@ -47,7 +48,7 @@ public class Upload extends HttpServlet {
         org.joda.time.format.DateTimeFormatter formatter = DateTimeFormat.forPattern( "dd/MM/yyyy HH:mm:ss" );
         String date = dt.toString( formatter );
         request.setAttribute( "disparaitreBouttonEditer", "disparaitreBouttonEditer" );
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/upload.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
     }
 
     @Override
@@ -119,7 +120,7 @@ public class Upload extends HttpServlet {
         } catch ( Exception e ) {
             request.setAttribute( "errorFileUpload", e.getMessage() );
         }
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/upload.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
     }
 
 }

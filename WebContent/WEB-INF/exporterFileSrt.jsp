@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<%@ include file="/WEB-INF/stuffs.jsp"%>
+	<%@ include file="/WEB-INF/inc/stuffs.jsp"%>
 <style type="text/css">
 [class*="col"] {
 	margin-bottom: 20px;
@@ -102,6 +102,8 @@ div#users-contain table td, div#users-contain table th {
 	<header>
 		<H2>Export du fichier de sous titre</H2>
 	</header>
+
+<%@ include file="/WEB-INF/inc/navbar.jsp"%>
 
 	<section id="container-fluid">
 

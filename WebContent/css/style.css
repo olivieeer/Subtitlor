@@ -10,10 +10,6 @@ body, header, section, footer, nav, article, P, input {
 	font-size: 16px;
 	color : black;
 }
-/* .well
-{
-	background-color: #668dc4;
-} */
 #bloc_page
 {
     width: 100%;
@@ -248,11 +244,11 @@ P.lisFichiers
 }
 P#idMessage
 {
-    margin : 2% 2% 2% 2%;
+    margin : 2%;
 }
 P.padding
 {
-	padding: 0px 15px 0px 15px;
+	padding: 0px 15px;
 }
 table,th,td,tr
 {
@@ -394,6 +390,9 @@ button a:hover {
 	font-size: 18px;
 	text-decoration: none;
 	cursor : pointer;
+	-webkit-box-shadow: 8px 8px 8px gray;
+	-moz-box-shadow: 8px 8px 8px gray;
+	box-shadow: 8px 8px 8px gray;
 }
 a
 {
@@ -463,9 +462,9 @@ input#gobutton
 input#gobutton:hover, input#gobutton:focus
 {
 	background-color :#399630;
-	-webkit-box-shadow: 0 0 1px rgba(0,0,0, .75);
-	-moz-box-shadow: 0 0 1px rgba(0,0,0, .75);
-	box-shadow: 0 0 1px rgba(0,0,0, .75);
+	-webkit-box-shadow: 8px 8px 8px gray;
+	-moz-box-shadow: 8px 8px 8px gray;
+	box-shadow: 8px 8px 8px gray;
 }
 [class*="col"] {
 /* background-color: green; */
@@ -489,8 +488,8 @@ img#imgIndex
 }
 
 [class*="col-"], footer {
-	/*background-color: #E2BC74; 
-	border: 2px solid black; */
+	background-color: #E2BC74; 
+	border: 2px solid black; 
 	border-radius: 6px;
 	line-height: 40px;
 	padding-left: 0px;

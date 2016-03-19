@@ -15,61 +15,70 @@ import com.subtitlor.dao.FileDao;
 import com.subtitlor.utilities.CustomizedString;
 import com.subtitlor.utilities.SubtitlesHandler;
 
-public class ModifierSubtitle extends HttpServlet  {
+public class ModifierSubtitle extends HttpServlet {
 
-	  private static final long serialVersionUID = 1L;
-	  private SubtitlesHandler subtitlesHandler;
-	  private FileDao fileDao;
+    private static final long   serialVersionUID = 1L;
+    private static final String VIEW1            = "/WEB-INF/upload.jsp";
+    private static final String VIEW2            = "/WEB-INF/editSubtitleDouble.jsp";
+    private static final String VIEW3            = "/WEB-INF/modifSubtitle.jsp";
+    private SubtitlesHandler    subtitlesHandler;
+    private FileDao             fileDao;
 
-	  public void init() throws ServletException {
-	        DaoFactory daoFactory = null;
-			try {
-				daoFactory = DaoFactory.getInstance();
-			} catch (DAOConfigurationException e) {
-				e.printStackTrace();
-			}
-	        this.fileDao = daoFactory.getFileDao();
-	  }
-	       
-	  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    	this.getServletContext().getRequestDispatcher("/WEB-INF/upload.jsp").forward(request, response);
-	  }
+    @Override
+    public void init() throws ServletException {
+        DaoFactory daoFactory = null;
+        try {
+            daoFactory = DaoFactory.getInstance();
+        } catch ( DAOConfigurationException e ) {
+            e.printStackTrace();
+        }
+        this.fileDao = daoFactory.getFileDao();
+    }
 
-	  public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-	    	subtitlesHandler = (SubtitlesHandler) request.getSession().getAttribute("subtitlesHandler");
-	    	ArrayList<CustomizedString> listTranslatedSubtitles = subtitlesHandler.getTranslatedSubtitles(request);;
-	    	subtitlesHandler.makeLineSrtToRecords();
-	    	String succes;
-	    	if (subtitlesHandler.isTraductionFinished()) {
-	    		succes = "Enregistrement total du fichier effectué";
-	    		request.getSession().setAttribute("apparaitreBouttonExporter", "apparaitreBouttonExporter");
-	    		request.getSession().setAttribute("disparaitreBouttonModifier", "disparaitreBouttonModifier");
-	    		request.getSession().setAttribute("disparaitreBouttonEnregistrer", "disparaitreBouttonEnregistrer");
-	    	} else {
-	    		succes = "Enregistrement partiel du fichier effectué";
-	    		request.getSession().setAttribute("partiel", "partiel");
-	    		request.getSession().setAttribute("apparaitreBouttonSauvegarder", "apparaitreBouttonSauvegarder");
-	    	}
-	    	try {
-				this.fileDao.deleteTable(subtitlesHandler.getFileName());
-			} catch (DaoException e1) {
-				request.setAttribute("errorDB", e1.getMessage());
-			}
-	    	
-	    	boolean isOK = false;
-			try {
-				isOK = fileDao.ajouter(subtitlesHandler.getListTradFileRecord());
-			} catch (DaoException e) {
-				request.setAttribute("errorDB", e.getMessage());
-			}
-	    	if (isOK) {
-	    		request.getSession().setAttribute("succes", succes);
-	    		request.getSession().setAttribute("doubleSubtitles", subtitlesHandler.getListCoupleOfCustomizedString());
-	    		request.getSession().setAttribute("subtitlesHandler", subtitlesHandler);
-	    		this.getServletContext().getRequestDispatcher("/WEB-INF/editSubtitleDouble.jsp").forward(request, response);
-	    	} else {
-	    		request.getSession().setAttribute("subtitlesHandler", subtitlesHandler);
-	    		this.getServletContext().getRequestDispatcher("/WEB-INF/modifSubtitle.jsp").forward(request, response);
-	    	}
-	  }
+    @Override
+    protected void doGet( HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
+        this.getServletContext().getRequestDispatcher( VIEW1 ).forward( request, response );
+    }
+
+    @Override
+    public void doPost( HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
+        subtitlesHandler = (SubtitlesHandler) request.getSession().getAttribute( "subtitlesHandler" );
+        ArrayList<CustomizedString> listTranslatedSubtitles = subtitlesHandler.getTranslatedSubtitles( request );
+        ;
+        subtitlesHandler.makeLineSrtToRecords();
+        String succes;
+        if ( subtitlesHandler.isTraductionFinished() ) {
+            succes = "Enregistrement total du fichier effectué";
+            request.getSession().setAttribute( "apparaitreBouttonExporter", "apparaitreBouttonExporter" );
+            request.getSession().setAttribute( "disparaitreBouttonModifier", "disparaitreBouttonModifier" );
+            request.getSession().setAttribute( "disparaitreBouttonEnregistrer", "disparaitreBouttonEnregistrer" );
+        } else {
+            succes = "Enregistrement partiel du fichier effectué";
+            request.getSession().setAttribute( "partiel", "partiel" );
+            request.getSession().setAttribute( "apparaitreBouttonSauvegarder", "apparaitreBouttonSauvegarder" );
+        }
+        try {
+            this.fileDao.deleteTable( subtitlesHandler.getFileName() );
+        } catch ( DaoException e1 ) {
+            request.setAttribute( "errorDB", e1.getMessage() );
+        }
+
+        boolean isOK = false;
+        try {
+            isOK = fileDao.ajouter( subtitlesHandler.getListTradFileRecord() );
+        } catch ( DaoException e ) {
+            request.setAttribute( "errorDB", e.getMessage() );
+        }
+        if ( isOK ) {
+            request.getSession().setAttribute( "succes", succes );
+            request.getSession().setAttribute( "doubleSubtitles", subtitlesHandler.getListCoupleOfCustomizedString() );
+            request.getSession().setAttribute( "subtitlesHandler", subtitlesHandler );
+            this.getServletContext().getRequestDispatcher( VIEW2 ).forward( request, response );
+        } else {
+            request.getSession().setAttribute( "subtitlesHandler", subtitlesHandler );
+            this.getServletContext().getRequestDispatcher( VIEW3 ).forward( request, response );
+        }
+    }
 }

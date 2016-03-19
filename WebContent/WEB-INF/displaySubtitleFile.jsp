@@ -4,14 +4,16 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<%@ include file="/WEB-INF/stuffs.jsp"%>
-<title>Editer les sous-titres</title>
+	<%@ include file="/WEB-INF/inc/stuffs.jsp"%>
+	<title>Editer les sous-titres</title>
 </head>
 <body>
 	<jsp:include page="/css/style.css" />
 	<header>
 		<H2 class="text-center">Traduction de fichier de sous titre</H2>
 	</header>
+
+<%@ include file="/WEB-INF/inc/navbar.jsp"%>
 
 	<section id="container-fluid">
 

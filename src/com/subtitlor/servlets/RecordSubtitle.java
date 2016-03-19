@@ -14,10 +14,12 @@ import com.subtitlor.dao.FileDao;
 import com.subtitlor.utilities.SubtitlesHandler;
 
 public class RecordSubtitle extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    public static final int   TAILLE_TAMPON    = 10240;
-    private SubtitlesHandler  subtitlesHandler;
-    private FileDao           fileDao;
+    private static final long   serialVersionUID = 1L;
+    private static final String VIEW1            = "/WEB-INF/upload.jsp";
+    private static final String VIEW2            = "/WEB-INF/editSubtitleDouble.jsp";
+    public static final int     TAILLE_TAMPON    = 10240;
+    private SubtitlesHandler    subtitlesHandler;
+    private FileDao             fileDao;
 
     @Override
     public void init() throws ServletException {
@@ -33,7 +35,7 @@ public class RecordSubtitle extends HttpServlet {
     @Override
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/upload.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( VIEW1 ).forward( request, response );
     }
 
     @Override
@@ -57,6 +59,6 @@ public class RecordSubtitle extends HttpServlet {
         request.setAttribute( "disparaitreBouttonEnregistré", "disparaitreBouttonEnregistré" );
         request.setAttribute( "doubleSubtitles", subtitlesHandler.getListCoupleOfCustomizedString() );
         request.getSession().setAttribute( "subtitlesHandler", subtitlesHandler );
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/editSubtitleDouble.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( VIEW2 ).forward( request, response );
     }
 }
