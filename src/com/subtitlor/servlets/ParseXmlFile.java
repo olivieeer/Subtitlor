@@ -11,7 +11,7 @@ public class ParseXmlFile extends HttpServlet {
 
     private static final long   serialVersionUID = 1L;
 
-    private static final String VUE              = "/rapportInventaire.jsp";
+    private static final String VIEW             = "/rapportInventaire.jsp";
 
     @Override
     public void init() throws ServletException {
@@ -21,13 +21,13 @@ public class ParseXmlFile extends HttpServlet {
     @Override
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
     }
 
     @Override
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
     }
 }

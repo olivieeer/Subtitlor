@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="TradFileRecord" table="translatedfile">
+      <meta attribute="class-description">
+         This class contains the TradFileRecord detail. 
+      </meta>
+      <id name="idLigne" type="int" column="idline">
+         <generator class="native"/>
+      </id>
+      <property name="timeValues" column="timevalues" type="string"/>
+      <property name="originalLine1" column="text1" type="string"/>
+      <property name="originalLine2" column="text2" type="int"/>
+      <property name="TranslatedLine1" column="translatedtext1" type="string"/>
+      <property name="TranslatedLine2" column="translatedtext2" type="string"/>
+      <property name="fileName" column="filename" type="string"/>
+      <property name="descriptionFile" column="descriptionfile" type="string"/>
+   </class>
+</hibernate-mapping>

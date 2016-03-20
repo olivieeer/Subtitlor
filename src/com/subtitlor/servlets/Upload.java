@@ -15,26 +15,49 @@ import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.hibernate.SessionFactory;
+import org.hibernate.service.ServiceRegistry;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
+import com.subtitlor.utilities.HibernateUtil;
+
 public class Upload extends HttpServlet {
 
-    private static final long   serialVersionUID = 1L;
-    private static final String VIEW             = "/WEB-INF/upload.jsp";
-    public static final int     TAILLE_TAMPON    = 10240;
-    public static final int     MAX_SIZE         = 10 * 1024 * 1024;     // 10Mb
-    private ServletFileUpload   uploader         = null;
-    private File                file;
-    private File                filesDir;
-    private FileItem            fileItem;
-    private String              fileDescription;
+    private static final long      serialVersionUID = 1L;
+    private static final String    VIEW             = "/WEB-INF/upload.jsp";
+    public static final int        TAILLE_TAMPON    = 10240;
+    public static final int        MAX_SIZE         = 10 * 1024 * 1024;     // 10Mb
+    private ServletFileUpload      uploader         = null;
+    private File                   file;
+    private File                   filesDir;
+    private FileItem               fileItem;
+    private String                 fileDescription;
+    private static SessionFactory  factory;
+    private static ServiceRegistry serviceRegistry;
 
     @Override
     public void init() throws ServletException {
         DiskFileItemFactory fileFactory = new DiskFileItemFactory();
         filesDir = (File) getServletContext().getAttribute( "FILES_DIR_FILE" );
         fileFactory.setRepository( filesDir );
+
+        HibernateUtil.createRecord();
+        // Session session = HibernateUtil.getSessionFactory().openSession();
+        //
+        // session.beginTransaction();
+        //
+        // TradFileRecord trdf = new TradFileRecord( "00:00:26,255 -->
+        // 00:00:27,949", "Ali", "Ben Barka", "Ali2",
+        // "Ben2 Barka2", "filename", "desc file" );
+        //
+        // session.save( trdf );
+        //
+        // // session.save(new Employee("Jakab Gipsz",department));
+        // // session.save(new Employee("Captain Nemo",department));
+        //
+        // session.getTransaction().commit();
+
         this.uploader = new ServletFileUpload( fileFactory );
     }
 
@@ -47,6 +70,17 @@ public class Upload extends HttpServlet {
         /* Conversion de la date en String selon le format défini */
         org.joda.time.format.DateTimeFormatter formatter = DateTimeFormat.forPattern( "dd/MM/yyyy HH:mm:ss" );
         String date = dt.toString( formatter );
+
+        // Configuration configuration = new Configuration();
+        // configuration.configure();
+        // serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
+        // configuration.getProperties() )
+        // .buildServiceRegistry();
+        // factory = configuration.buildSessionFactory( serviceRegistry );
+        //
+        // ManageTradFileRecord ME = new ManageTradFileRecord();
+        // Integer empID1 = ME.addTradFileRecord( "Zara", "Ali", 1000 );
+
         request.setAttribute( "disparaitreBouttonEditer", "disparaitreBouttonEditer" );
         this.getServletContext().getRequestDispatcher( VIEW ).forward( request, response );
     }

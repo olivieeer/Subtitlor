@@ -1,84 +1,104 @@
 package com.subtitlor.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table( name = "TradFileRecord" )
 public class TradFileRecord {
-	
-	private String idLigne;
-	private String timeValues;	
-	private String originalLine1;
-	private String originalLine2;
-	private String TranslatedLine1;
-	private String TranslatedLine2;
-	private String fileName;
-	private String descriptionFile;
-	
-	public  TradFileRecord () {
-		super();
-	}
 
-	public String getIdLigne() {
-		return idLigne;
-	}
+    @Id
+    @GeneratedValue
+    private String idLigne;
 
-	public void setIdLigne(String idLigne) {
-		this.idLigne = idLigne;
-	}
+    private String timeValues;
+    private String originalLine1;
+    private String originalLine2;
+    private String TranslatedLine1;
+    private String TranslatedLine2;
+    private String fileName;
+    private String descriptionFile;
 
-	public String getTimeValues() {
-		return timeValues;
-	}
+    public TradFileRecord() {
+        super();
+    }
 
-	public void setTimeValues(String timeValues) {
-		this.timeValues = timeValues;
-	}
+    public String getIdLigne() {
+        return idLigne;
+    }
 
-	public String getOriginalLine1() {
-		return originalLine1;
-	}
+    public void setIdLigne( String idLigne ) {
+        this.idLigne = idLigne;
+    }
 
-	public void setOriginalLine1(String originalLine1) {
-		this.originalLine1 = originalLine1;
-	}
+    public String getTimeValues() {
+        return timeValues;
+    }
 
-	public String getOriginalLine2() {
-		return originalLine2;
-	}
+    public void setTimeValues( String timeValues ) {
+        this.timeValues = timeValues;
+    }
 
-	public void setOriginalLine2(String originalLine2) {
-		this.originalLine2 = originalLine2;
-	}
+    public String getOriginalLine1() {
+        return originalLine1;
+    }
 
-	public String getTranslatedLine1() {
-		return TranslatedLine1;
-	}
+    public void setOriginalLine1( String originalLine1 ) {
+        this.originalLine1 = originalLine1;
+    }
 
-	public void setTranslatedLine1(String translatedLine1) {
-		TranslatedLine1 = translatedLine1;
-	}
+    public String getOriginalLine2() {
+        return originalLine2;
+    }
 
-	public String getTranslatedLine2() {
-		return TranslatedLine2;
-	}
+    public void setOriginalLine2( String originalLine2 ) {
+        this.originalLine2 = originalLine2;
+    }
 
-	public void setTranslatedLine2(String translatedLine2) {
-		TranslatedLine2 = translatedLine2;
-	}
+    public String getTranslatedLine1() {
+        return TranslatedLine1;
+    }
 
-	public String getFileName() {
-		return fileName;
-	}
+    public void setTranslatedLine1( String translatedLine1 ) {
+        TranslatedLine1 = translatedLine1;
+    }
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
+    public String getTranslatedLine2() {
+        return TranslatedLine2;
+    }
 
-	public String getDescriptionFile() {
-		return descriptionFile;
-	}
+    public void setTranslatedLine2( String translatedLine2 ) {
+        TranslatedLine2 = translatedLine2;
+    }
 
-	public void setDescriptionFile(String descriptionFile) {
-		this.descriptionFile = descriptionFile;
-	}
-	
-	
-	
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName( String fileName ) {
+        this.fileName = fileName;
+    }
+
+    public String getDescriptionFile() {
+        return descriptionFile;
+    }
+
+    public void setDescriptionFile( String descriptionFile ) {
+        this.descriptionFile = descriptionFile;
+    }
+
+    public TradFileRecord( String timeValues, String originalLine1, String originalLine2, String translatedLine1,
+            String translatedLine2, String fileName, String descriptionFile ) {
+        super();
+        this.timeValues = timeValues;
+        this.originalLine1 = originalLine1;
+        this.originalLine2 = originalLine2;
+        TranslatedLine1 = translatedLine1;
+        TranslatedLine2 = translatedLine2;
+        this.fileName = fileName;
+        this.descriptionFile = descriptionFile;
+    }
+
 }
