@@ -11,8 +11,7 @@
 <body>
 	<jsp:include page="/css/style.css" />
 	<div ng-app="">
-
-		<%@ include file="/WEB-INF/inc/navbar.jsp"%>
+	<%@ include file="/WEB-INF/inc/navbar.jsp"%>
 
 			<section class="container">
 			<div class="row">

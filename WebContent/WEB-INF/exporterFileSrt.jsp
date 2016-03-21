@@ -99,13 +99,12 @@ div#users-contain table td, div#users-contain table th {
 </head>
 <body>
 	<jsp:include page="/css/style.css" />
-	<header>
+<!-- 	<header>
 		<H2>Export du fichier de sous titre</H2>
-	</header>
-
+	</header> -->
 <%@ include file="/WEB-INF/inc/navbar.jsp"%>
 
-	<section id="container-fluid">
+	<section id="container">
 
 		<div class="row col-md-12 col-lg-12">
 			<div class="col-md-3 col-lg-3">

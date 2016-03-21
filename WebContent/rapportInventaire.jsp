@@ -23,24 +23,24 @@
 	<div class="container">
 		<p><b>Liste de tous les livres :</b></p>
 		<div>
-		<ul>
+		<ul class="list-group">
 		<%-- Parcours du document parsé pour y récupérer chaque nœud "livre". --%>
 		<x:forEach var="livre" select="$doc/inventaire/livre">
 			<%-- Affichage du titre du livre récupéré. --%>
-		    <li><x:out select="$livre/titre" /></li>
+		    <li class="list-group-item"><x:out select="$livre/titre" /></li>
 		</x:forEach>
 		</ul>
 		</div>
 		
 		<p><b>Liste des livres qu'il faut réapprovisionner :</b></p>
 		<div>
-		<ul>
+		<ul class="list-group">
 		<%-- Parcours du document parsé pour y récupérer chaque nœud "livre" 
 			dont le contenu du nœud "stock" est inférieur au contenu du nœud
 			"minimum". --%>
 		<x:forEach var="livre" select="$doc/inventaire/livre[stock < minimum]">
 			<%-- Affichage des titres, stocks et minimaux du livre récupéré. --%>
-		    <li><x:out select="$livre/titre" /> : <x:out select="$livre/stock" /> livres en stock (limite avant alerte : <x:out select="$livre/minimum" />)</li>
+		    <li class="list-group-item"><x:out select="$livre/titre" /> : <x:out select="$livre/stock" /> livres en stock (limite avant alerte : <x:out select="$livre/minimum" />)</li>
 		</x:forEach>
 		</ul>
 		</div>

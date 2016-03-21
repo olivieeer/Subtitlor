@@ -20,8 +20,6 @@ import org.hibernate.service.ServiceRegistry;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
-import com.subtitlor.utilities.HibernateUtil;
-
 public class Upload extends HttpServlet {
 
     private static final long      serialVersionUID = 1L;
@@ -42,7 +40,7 @@ public class Upload extends HttpServlet {
         filesDir = (File) getServletContext().getAttribute( "FILES_DIR_FILE" );
         fileFactory.setRepository( filesDir );
 
-        HibernateUtil.createRecord();
+        // HibernateUtil.createRecord();
         // Session session = HibernateUtil.getSessionFactory().openSession();
         //
         // session.beginTransaction();

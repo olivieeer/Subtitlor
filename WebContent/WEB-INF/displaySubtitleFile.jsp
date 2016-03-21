@@ -9,17 +9,16 @@
 </head>
 <body>
 	<jsp:include page="/css/style.css" />
-	<header>
+<!-- 	<header>
 		<H2 class="text-center">Traduction de fichier de sous titre</H2>
-	</header>
-
+	</header> -->
 <%@ include file="/WEB-INF/inc/navbar.jsp"%>
 
 	<section id="container-fluid">
 
 		<div class="row">
 			<div class="col-md-12 col-lg-12">
-				<div class="col-md-3 col-lg-3">
+				<div class="col-md-3 col-lg-3 text-center">
 					<nav class="navUpload">
 						<%@ include file="menu.jsp"%>
 					</nav>
@@ -52,10 +51,10 @@
 						</c:choose>
 						<form method="post" name="form" id="form" action="recordSubtitle">
 							<div id="listFichier">
-								<ul>
+								<ul class="media-list">
 									<c:forEach items="${ listFiles }" var="line" varStatus="status">
 										<c:if test="${line.isTranslationFinished()}">
-											<li><div class="btnEnligne">
+											<li class="media thumbnail"><div class="btnEnligne">
 													<P>
 														<c:out value="${line.myString()}" />
 														&nbsp;&nbsp;<span>Traduction finie&nbsp;&nbsp;</span>
@@ -71,7 +70,7 @@
 													</P></li>
 										</c:if>
 										<c:if test="${!line.isTranslationFinished()}">
-											<li><div class="btnEnligne">
+											<li class="media thumbnail"><div class="btnEnligne">
 													<P>
 														<c:out value="${line.myString()}" />
 														&nbsp;&nbsp;<span>Traduction partielle&nbsp;&nbsp;</span><a

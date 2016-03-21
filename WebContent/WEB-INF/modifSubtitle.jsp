@@ -9,17 +9,16 @@
 </head>
 <body>
 	<jsp:include page="/css/style.css" />
-	<header>
+<!-- 	<header>
 		<H2 class="center">Traduction de fichier de sous titre</H2>
-	</header>
-
+	</header> -->
 	<%@ include file="/WEB-INF/inc/navbar.jsp"%>
 
-	<section id="container-fluid">
+	<section id="container">
 
 		<div class="row">
 			<div class="col-md-12 col-lg-12">
-				<div class="col-md-3 col-lg-3">
+				<div class="col-md-3 col-lg-3 text-center">
 					<nav>
 						<%@ include file="menu.jsp"%>
 					</nav>
