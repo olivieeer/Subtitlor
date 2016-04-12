@@ -8,7 +8,6 @@
 <!--[if lt IE 9]>
      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
      <![endif]-->
-<!-- <link type="text/css" rel="stylesheet" href="css/styleBleu.css" /> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <!-- jQuery est inclus ! -->
 <link
@@ -23,7 +22,7 @@
 <title>Editer les sous-titres</title>
 </head>
 <body>
-	<jsp:include page="/css/styleBleu.css" />
+	<jsp:include page="/css/style.css" />
 
 	<header>
 		<H2>Traduction de fichier de sous titre</H2>

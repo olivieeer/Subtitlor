@@ -106,7 +106,7 @@ div#users-contain table td, div#users-contain table th {
 <title>Download fichier</title>
 </head>
 <body>
-	<jsp:include page="/css/styleBleu.css" />
+	<jsp:include page="/css/style.css" />
 	<header>
 		<H2>Export du fichier de sous titre</H2>
 	</header>

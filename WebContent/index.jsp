@@ -16,7 +16,7 @@
 	crossorigin="anonymous">
 <title>Bienvenue</title>
 </head>
-<jsp:include page="/css/styleBleu.css" />
+<jsp:include page="/css/style.css" />
 <body>
 
 	<header>

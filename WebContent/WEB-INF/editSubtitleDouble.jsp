@@ -16,7 +16,7 @@
 <title>edition</title>
 </head>
 <body>
-	<jsp:include page="/css/styleBleu.css" />
+	<jsp:include page="/css/style.css" />
 	<header>
 		<H2>Traduction de fichier de sous titre</H2>
 	</header>

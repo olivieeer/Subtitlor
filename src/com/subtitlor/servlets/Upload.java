@@ -31,79 +31,75 @@ public class Upload extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        DiskFileItemFactory fileFactory = new DiskFileItemFactory();
-        filesDir = (File) getServletContext().getAttribute( "FILES_DIR_FILE" );
-        fileFactory.setRepository( filesDir );
+        final DiskFileItemFactory fileFactory = new DiskFileItemFactory();
+        this.filesDir = (File) this.getServletContext().getAttribute( "FILES_DIR_FILE" );
+        fileFactory.setRepository( this.filesDir );
         this.uploader = new ServletFileUpload( fileFactory );
     }
 
     @Override
-    protected void doGet( HttpServletRequest request, HttpServletResponse response )
+    protected void doGet( final HttpServletRequest request, final HttpServletResponse response )
             throws ServletException, IOException {
 
         /* Récupération de la date courante */
-        DateTime dt = new DateTime();
+        final DateTime dt = new DateTime();
         /* Conversion de la date en String selon le format défini */
-        org.joda.time.format.DateTimeFormatter formatter = DateTimeFormat.forPattern( "dd/MM/yyyy HH:mm:ss" );
-        String date = dt.toString( formatter );
+        final org.joda.time.format.DateTimeFormatter formatter = DateTimeFormat.forPattern( "dd/MM/yyyy HH:mm:ss" );
+        final String date = dt.toString( formatter );
         request.setAttribute( "disparaitreBouttonEditer", "disparaitreBouttonEditer" );
         this.getServletContext().getRequestDispatcher( "/WEB-INF/upload.jsp" ).forward( request, response );
     }
 
     @Override
-    public void doPost( HttpServletRequest request, HttpServletResponse response )
+    public void doPost( final HttpServletRequest request, final HttpServletResponse response )
             throws ServletException, IOException {
-        String description = null;
-        if ( !ServletFileUpload.isMultipartContent( request ) ) {
+        final String description = null;
+        if ( !ServletFileUpload.isMultipartContent( request ) )
             throw new ServletException( "Content type is not multipart/form-data" );
-        }
         try {
 
-            FileItemFactory factory = new DiskFileItemFactory();
+            final FileItemFactory factory = new DiskFileItemFactory();
 
             // Create a new file upload handler
-            ServletFileUpload upload = new ServletFileUpload( factory );
-            List<FileItem> uploadItems = upload.parseRequest( request );
+            final ServletFileUpload upload = new ServletFileUpload( factory );
+            final List<FileItem> uploadItems = upload.parseRequest( request );
 
-            for ( FileItem uploadItem : uploadItems ) {
+            for ( final FileItem uploadItem : uploadItems ) {
                 if ( uploadItem.isFormField() ) {
-                    String fieldName = uploadItem.getFieldName();
-                    fileDescription = uploadItem.getString();
+                    final String fieldName = uploadItem.getFieldName();
+                    this.fileDescription = uploadItem.getString();
                 }
             }
-            Iterator<FileItem> fileUploadItemsIterator = uploadItems.iterator();
+            final Iterator<FileItem> fileUploadItemsIterator = uploadItems.iterator();
             while ( fileUploadItemsIterator.hasNext() ) {
-                fileItem = fileUploadItemsIterator.next();
-                if ( fileItem.getName() == null ) {
+                this.fileItem = fileUploadItemsIterator.next();
+                if ( this.fileItem.getName() == null ) {
                     continue;
                 }
-                // System.out.println( "FileName=" + fileItem.getName() );
-                // System.out.println( "ContentType=" +
-                // fileItem.getContentType() );
-                // System.out.println( "Size in bytes=" + fileItem.getSize() );
-                file = new File(
-                        request.getServletContext().getAttribute( "FILES_DIR" ) + File.separator + fileItem.getName() );
+                this.file = new File(
+                        request.getServletContext().getAttribute( "FILES_DIR" ) + File.separator
+                                + this.fileItem.getName() );
                 String filename;
-                filename = file.getName();
-                if ( filename != null && !filename.isEmpty() && !filename.equals( "tmpfiles" ) ) {
+                filename = this.file.getName();
+                if ( ( filename != null ) && !filename.isEmpty() && !filename.equals( "tmpfiles" ) ) {
                     // Corrige un bug du fonctionnement d'Internet Explorer
                     filename = filename.substring( filename.lastIndexOf( '/' ) + 1 )
                             .substring( filename.lastIndexOf( '\\' ) + 1 );
-                    String extension = filename.substring( filename.indexOf( "." ) );
+                    final String extension = filename.substring( filename.indexOf( "." ) );
                     if ( !extension.equals( ".srt" ) ) {
                         request.setAttribute( "erreurPasFichierSrt", new String( "erreurPasFichierSrt" ) );
                         request.setAttribute( "disparaitreBouttonEditer", "disparaitreBouttonEditer" );
                     } else {
-                        System.out.println( "Absolute Path at server=" + file.getAbsolutePath() );
-                        fileItem.write( file );
-                        System.out.println( "File " + fileItem.getName() + " uploaded successfully." );
+                        System.out.println( "Absolute Path at server=" + this.file.getAbsolutePath() );
+                        this.fileItem.write( this.file );
+                        System.out.println( "File " + this.fileItem.getName() + " uploaded successfully." );
                         request.setAttribute( "succesUpload", "succesUpload" );
-                        request.getSession().setAttribute( "fileItem", fileItem );
-                        request.getSession().setAttribute( "nomFichier", fileItem.getName() );
-                        request.getSession().setAttribute( "Fichierdescription", fileDescription );
-                        request.getSession().setAttribute( "pathFile", file.getAbsolutePath() );
-                        String pathFile = file.getAbsolutePath();
-                        int nbDerniereSlash = pathFile.lastIndexOf( "\\" );
+                        request.getSession().setAttribute( "fileItem", this.fileItem );
+                        request.getSession().setAttribute( "nomFichier", this.fileItem.getName() );
+                        request.getSession().setAttribute( "Fichierdescription", this.fileDescription );
+                        request.getSession().setAttribute( "pathFile", this.file.getAbsolutePath() );
+                        String pathFile = this.file.getAbsolutePath();
+                        final int nbDerniereSlash = pathFile.lastIndexOf( "\\" );
                         pathFile = pathFile.substring( 0, nbDerniereSlash + 1 );
                         request.getSession().setAttribute( "pathFileTomcat", pathFile );
                     }
@@ -114,12 +110,11 @@ public class Upload extends HttpServlet {
                 }
             }
 
-        } catch ( FileUploadException e ) {
+        } catch ( final FileUploadException e ) {
             request.setAttribute( "errorFileUpload", e.getMessage() );
-        } catch ( Exception e ) {
+        } catch ( final Exception e ) {
             request.setAttribute( "errorFileUpload", e.getMessage() );
         }
         this.getServletContext().getRequestDispatcher( "/WEB-INF/upload.jsp" ).forward( request, response );
     }
-
 }

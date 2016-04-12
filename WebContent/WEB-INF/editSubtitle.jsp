@@ -16,7 +16,7 @@
 <title>Editer les sous-titres</title>
 </head>
 <body>
-	<jsp:include page="/css/styleBleu.css" />
+	<jsp:include page="/css/style.css" />
 	<header>
 		<H2 class="text-center">Traduction de fichier de sous titre</H2>
 	</header>
