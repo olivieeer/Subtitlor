@@ -3,10 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<%@ include file="/WEB-INF/inc/stuffs.jsp"%>
-
-<title>Upload File</title>
+	<%@ include file="/WEB-INF/inc/stuffs.jsp"%>
+	<title>Upload File</title>
 </head>
 <body>
 	<jsp:include page="/css/style.css" />
@@ -122,7 +120,7 @@
 							<br />
 						</fieldset>
 					</div>
-					<div class="col-md-2 col-lg-2">&nbsp;</div>
+					<!-- <div class="col-md-2 col-lg-2">&nbsp;</div> -->
 				</div>
 			</div>
 		</section>

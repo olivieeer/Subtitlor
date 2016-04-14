@@ -2,10 +2,10 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-     <meta charset="utf-8" />
+<head>
 	<%@ include file="/WEB-INF/inc/stuffs.jsp"%>
-  </head>
+	<title>Bienvenue</title>
+</head>
 <jsp:include page="/css/style.css" />
 <body>
 	<%@ include file="/WEB-INF/inc/navbar.jsp"%>

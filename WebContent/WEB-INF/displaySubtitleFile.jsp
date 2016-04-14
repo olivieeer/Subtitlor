@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
 	<%@ include file="/WEB-INF/inc/stuffs.jsp"%>
 	<title>Editer les sous-titres</title>
 </head>
